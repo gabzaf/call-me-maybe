@@ -21,6 +21,20 @@ Output: `data/output/function_calling_results.json`, an array with one object pe
 }
 ```
 
+## Setup
+
+The project is run with:
+
+```bash
+uv sync
+uv run python -m src
+```
+
+- `uv sync` reads `pyproject.toml` and installs the dependencies into a local environment (`.venv`). This includes `torch` and `transformers`, which `llm_sdk` needs to load the model.
+- `uv run python -m src` runs the code inside that environment.
+
+So `pyproject.toml` must exist before any code can run.
+
 ## Scope in the tool-calling pipeline
 
 | Step | Responsibility | In this project |
