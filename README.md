@@ -30,8 +30,12 @@ Tool calling happens in five steps. **This project does step 2 only.**
 
 The model only decides what to do. The program decides whether to actually do it. This split makes it safer: the model can never run anything on its own.
 
-## Keeping the output valid
+## Constrained decoding
 
-Small models like Qwen3 0.6B often get JSON wrong. They add extra text, forget quotes or invent fields. To stop this, the program checks every word the model is about to write and blocks anything that would break the format. The model still chooses the function and the values, but the output always comes out as valid JSON.
+Small models like Qwen3 0.6B often get JSON wrong. They add extra text, forget quotes or invent fields.
 
-For the technical details, see [DEV.md](DEV.md).
+**Constrained decoding** fixes this. The model writes its answer one piece at a time. Before each piece, the program blocks every option that would break the format. The model picks only from what's left.
+
+So the model still chooses the function and the values, but the output always comes out as valid JSON.
+
+For the full algorithm, see [DEV.md](DEV.md#constrained-decoding).
