@@ -39,3 +39,9 @@ Small models like [Qwen3 0.6B](CONCEPTS.md#qwen3) often get [JSON](CONCEPTS.md#j
 So the model still chooses the function and the values, but the output always comes out as valid JSON.
 
 For the full algorithm, see [DEV.md](DEV.md#constrained-decoding). For terms, see [CONCEPTS.md](CONCEPTS.md).
+
+## Documentation
+
+- [DEV.md](DEV.md): technical details
+- [CONCEPTS.md](CONCEPTS.md): terms explained
+- [NOTES.md](NOTES.md): what I learned
