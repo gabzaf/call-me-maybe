@@ -4,7 +4,7 @@
 
 ## Description
 
-Teaching a small AI model to turn a question into a function call instead of an answer.
+Teaching a small [AI model](CONCEPTS.md#llm) to turn a question into a [function call](CONCEPTS.md#function-calling) instead of an answer.
 
 Ask *"What is the sum of 40 and 2?"* and the program won't answer `42`. It picks the function that solves the problem and fills in its values:
 
@@ -32,10 +32,10 @@ The model only decides what to do. The program decides whether to actually do it
 
 ## Constrained decoding
 
-Small models like Qwen3 0.6B often get JSON wrong. They add extra text, forget quotes or invent fields.
+Small models like [Qwen3 0.6B](CONCEPTS.md#qwen3) often get [JSON](CONCEPTS.md#json) wrong. They add extra text, forget quotes or [invent fields](CONCEPTS.md#hallucination).
 
-**Constrained decoding** fixes this. The model writes its answer one piece at a time. Before each piece, the program blocks every option that would break the format. The model picks only from what's left.
+**[Constrained decoding](CONCEPTS.md#constrained-decoding)** fixes this. The model writes its answer one piece at a time. Before each piece, the program blocks every option that would break the format. The model picks only from what's left.
 
 So the model still chooses the function and the values, but the output always comes out as valid JSON.
 
-For the full algorithm, see [DEV.md](DEV.md#constrained-decoding).
+For the full algorithm, see [DEV.md](DEV.md#constrained-decoding). For terms, see [CONCEPTS.md](CONCEPTS.md).
