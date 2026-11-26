@@ -91,3 +91,52 @@ An LLM choosing a function and its arguments instead of answering directly. Also
 ### Agent
 
 An AI system that uses tools in a loop to complete tasks. Function calling is what makes it possible.
+
+## Tooling
+
+### TOML
+
+A format for config files, like JSON or YAML but easier to read and write. It has three building blocks:
+
+```toml
+# comments start with #
+key = "value"          # strings, numbers, booleans, lists...
+
+[section]              # a "table": groups the keys below it
+other_key = true
+```
+
+### pyproject.toml
+
+The file that describes a Python project: name, Python version, dependencies. `uv`, `pip`, `mypy` and `flake8` plugins all read it. The name is fixed by a Python standard, so tools only look for exactly `pyproject.toml`.
+
+### Dependencies vs dependency groups
+
+Two lists in `pyproject.toml`, split by who needs the package:
+
+- `dependencies`: what the program needs to **run**. Anyone who runs the project gets them. Here: `pydantic`, `numpy`, `llm-sdk`.
+- `[dependency-groups]`: extra tools only the **developer** needs. The program never imports them. Here: `flake8` and `mypy` in a `dev` group.
+
+`uv sync` installs both by default.
+
+### uv.lock
+
+A file `uv` generates with the exact version of every installed package, so every machine installs the same ones. Never edited by hand.
+
+### pip
+
+Python's default tool to install packages.
+
+### uv
+
+A faster replacement for pip. It also creates the virtual environment (`.venv/`) and writes `uv.lock`.
+
+[Official site](https://docs.astral.sh/uv/)
+
+### mypy
+
+Checks type hints without running the code, for example passing a `str` where an `int` is expected.
+
+### flake8
+
+Checks code style (PEP 8): line length, unused imports, spacing.
