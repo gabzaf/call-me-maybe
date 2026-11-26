@@ -1,0 +1,20 @@
+[project]
+name = "call-me-maybe"
+version = "0.0.1"
+description = "Function calling with constrained decoding on a small LLM."
+readme = "README.md"
+requires-python = ">=3.10"
+authors = [
+	{ name = "Gabriel Affonso" },
+]
+dependencies = [
+	"pydantic",
+	"numpy",
+	"llm-sdk",
+]
+
+[dependency-groups]
+dev = [
+	"flake8",
+	"mypy",
+]
