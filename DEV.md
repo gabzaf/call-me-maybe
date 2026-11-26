@@ -23,6 +23,30 @@ Output: `data/output/function_calling_results.json`, an array with one object pe
 
 ## Setup
 
+### Requirements
+
+- Python 3.10 or later.
+- [uv](https://docs.astral.sh/uv/getting-started/installation/). Check with `uv --version`. If it's missing:
+
+  ```bash
+  curl -LsSf https://astral.sh/uv/install.sh | sh
+  ```
+
+  This installs it to `~/.local/bin/uv`.
+
+### Rebuilding from scratch
+
+The steps used to create the project, for redoing it on another machine:
+
+```bash
+unzip data.zip                      # data/input/*.json
+unzip llm_sdk.zip                   # llm_sdk/ next to src/
+uv init --no-workspace              # creates pyproject.toml
+uv add numpy pydantic ./llm_sdk     # installs deps, fills pyproject.toml, writes uv.lock
+```
+
+### Running
+
 The project is run with:
 
 ```bash
